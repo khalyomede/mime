@@ -1,0 +1,8 @@
+version: "3"
+services:
+  v:
+    image: thevlang/vlang:alpine
+    entrypoint: v
+    volumes:
+      - .:/home/alpine
+    working_dir: /home/alpine
