@@ -37,7 +37,7 @@ v install khalyomede.mime
 In this example, we will store a jpeg mime type using the available enum.
 
 ```v
-import khalyomede.mime.src.mime { Mime }
+import khalyomede.mime { Mime }
 
 fn main() {
   mime_value := Mime.image_jpeg
@@ -49,7 +49,7 @@ fn main() {
 In this example, we will get the text representation of a jpeg mime type.
 
 ```v
-import khalyomede.mime.src.mime { Mime }
+import khalyomede.mime { Mime }
 
 fn main() {
   mime_value := Mime.image_jpeg
@@ -75,5 +75,5 @@ Browse src/mime/Mime.v to find all the available mimes.
 ## Test
 
 ```
-v test src/test
+v test .
 ```
