@@ -1,7 +1,7 @@
 version: "3"
 services:
   v:
-    image: thevlang/vlang:alpine
+    build: ./docker/v
     entrypoint: v
     volumes:
       - .:/home/alpine
