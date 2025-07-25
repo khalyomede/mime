@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.extensions()` method to list allowed extensions.
 - `.from_text()` static method to get a MIME enum from its textual representation.
 - `.from_extension()` static method to get a MIME enum from one of its allowed extensions.
+- Comprehensive list of common MIME.
 
 ### Break
 
