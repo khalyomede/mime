@@ -1,6 +1,18 @@
-# mime
+# MIME
 
-Mime type enum and function in V.
+List of mime and their file extensions.
+
+```v
+module main
+
+import khalyomede.mime { Mime }
+
+fn main() {
+  text_html := Mime.text_html
+
+  println(text_html) // "text/html"
+}
+```
 
 ## Summary
 
@@ -8,72 +20,96 @@ Mime type enum and function in V.
 - [Features](#features)
 - [Installation](#installation)
 - [Examples](#examples)
-- [Available mimes](#available-mimes)
-- [Known issues](#known-issues)
-- [Test](#test)
 
 ## About
 
-I created this package to help me manipulate mime type in a type safe manner.
+I create this package to have a type safe list of allowed mime, to be used to return "Content-Type" header for my router.
+
+This library can be used for other use cases as well.
+
+[back to summary](#summary)
 
 ## Features
 
-- Provide an enum for mimes types
-- Provide a function to get the textual representation of the enum mime type
+- List of common MIME types
+- Ability to get allowed file extensions from a MIME type
+- Ability to get the MIME text representation
+- Ability to get a MIME Type from a file extension
+- Ability to get a MIME Type from a MIME text representation
 
-## Installation
+[back to summary](#summary)
 
-```v
+## Installation
+
+- [Using V installer](#using-v-installer)
+
+### Using V installer
+
+On your terminal, run this command:
+
+```bash
 v install khalyomede.mime
 ```
 
-## Examples
+[back to summary](#summary)
 
-- [1. Find a mime with the enum](#1-find-a-mime-with-the-enum)
-- [2. Get the textual representation of an enum mime](#2-get-the-textual-representation-of-an-enum-mime)
+## Examples
 
-### 1. Find a mime with the enum
+- [Get the text representation](#get-the-text-representation)
+- [Get the list of allowed file extensions](#get-the-list-of-allowed-file-extensions)
+- [Create from a MIME text representation](#create-from-a-mime-text-representation)
+- [Create from a file extension](#create-from-a-file-extension)
 
-In this example, we will store a jpeg mime type using the available enum.
+### Get the text representation
+
+Use `.str()` or pass it on a parameter accepting a `string` which will convert the MIME type to its text representation.
 
 ```v
+module main
+
 import khalyomede.mime { Mime }
 
 fn main() {
-  mime_value := Mime.image_jpeg
+  text_html := Mime.text_html
+
+  assert text_html.str() == "text/html"
 }
 ```
 
-### 2. Get the textual representation of an enum mime
-
-In this example, we will get the text representation of a jpeg mime type.
+### Get the list of allowed file extensions
 
 ```v
+module main
+
 import khalyomede.mime { Mime }
 
 fn main() {
-  mime_value := Mime.image_jpeg
-  mime_text := mime_value.to_str(mime)
+  text_html := Mime.text_html
 
-  println(mime_text)
+  assert text_html.extensions() == ["html"]
 }
 ```
 
+### Create from a MIME text representation
+
 ```v
-$ v run src/index.v
-"image/jpeg"
+module main
+
+import khalyomede.mime { Mime }
+
+fn main() {
+  text_html := Mime.from_text("text/html") or { Mime.text_html }
+}
 ```
 
-## Available mimes
+### Create from a file extension
 
-Browse src/mime/Mime.v to find all the available mimes.
+```v
+module main
 
-## Known issues
+import khalyomede.mime { Mime }
 
-- As being exhaustive requires a lot of time, I decided to start with a small set of mimes types that I commonly use. If you happen to not see the mime you would like to use, please create an issue, or make a pull request to add one. Thanks!
-
-## Test
-
-```
-v test .
+fn main() {
+  text_html := Mime.from_file_extension("html") or { Mime.text_html }
+}
 ```

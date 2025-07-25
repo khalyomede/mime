@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `.str()` method for native string conversion.
+- `.extensions()` method to list allowed extensions.
+- `.from_text()` static method to get a MIME enum from its textual representation.
+- `.from_extension()` static method to get a MIME enum from one of its allowed extensions.
+
+### Break
+
+- Removed `.to_str()` method.
+
 ## [0.2.0] - 2021-05-25
 
 ### Break

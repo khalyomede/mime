@@ -1,8 +1,8 @@
-version: "3"
 services:
   v:
-    build: ./docker/v
+    image: khalyomede/vlang:latest-alpine
+    user: root
     entrypoint: v
+    working_dir: /root/app
     volumes:
-      - .:/home/alpine
-    working_dir: /home/alpine
+      - .:/root/app
