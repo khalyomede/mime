@@ -1,7 +1,6 @@
 module mime
 
-@[deprecated: "Use Mime.parse_extension() instead."]
-pub fn Mime.from_extension(extension string) ?Mime {
+pub fn Mime.parse_extension(extension string) ?Mime {
     return match extension {
         '123' { Mime.application_vnd_lotus_1_2_3 }
         '3dml' { Mime.text_vnd_in3d_3dml }

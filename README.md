@@ -98,7 +98,7 @@ module main
 import khalyomede.mime { Mime }
 
 fn main() {
-  text_html := Mime.from_text("text/html") or { Mime.text_html }
+  text_html := Mime.parse("text/html") or { Mime.text_html }
 }
 ```
 
@@ -110,6 +110,6 @@ module main
 import khalyomede.mime { Mime }
 
 fn main() {
-  text_html := Mime.from_file_extension("html") or { Mime.text_html }
+  text_html := Mime.parse_extension("html") or { Mime.text_html }
 }
 ```
