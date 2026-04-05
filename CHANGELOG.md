@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Deprecate `Mime.from_text()`. Use `Mime.parse()` instead ([#2](https://github.com/khalyomede/mime/issues/2)).
 - Deprecate `Mime.from_file_extension()`. Use `Mime.parse_extension()` instead ([#2](https://github.com/khalyomede/mime/issues/2)).
+- New method `Mime.parse_path()` to parse a Mime type from a file path or URLs ([#3](https://github.com/khalyomede/mime/issues/3)).
 
 ## [0.3.0] - 2025-07-25
 
