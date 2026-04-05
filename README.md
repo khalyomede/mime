@@ -59,6 +59,7 @@ v install khalyomede.mime
 - [Get the list of allowed file extensions](#get-the-list-of-allowed-file-extensions)
 - [Create from a MIME text representation](#create-from-a-mime-text-representation)
 - [Create from a file extension](#create-from-a-file-extension)
+- [Create from a file path or URL](#create-from-a-file-path-or-url)
 
 ### Get the text representation
 
@@ -111,5 +112,30 @@ import khalyomede.mime { Mime }
 
 fn main() {
   text_html := Mime.parse_extension("html") or { Mime.text_html }
+}
+```
+
+### Create from a file path or URL
+
+
+```v
+module main
+
+import khalyomede.mime { Mime }
+
+fn main() {
+  text_html := Mime.parse_path("/user/configuration/index.html") or { Mime.text_html }
+}
+```
+
+Works also with URLs.
+
+```v
+module main
+
+import khalyomede.mime { Mime }
+
+fn main() {
+  text_html := Mime.parse_path("https://example.com/user/configuration/index.html") or { Mime.text_html }
 }
 ```
