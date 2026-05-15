@@ -6,6 +6,7 @@ services:
     working_dir: /root/app
     volumes:
       - .:/root/app
+      - ./docker-data/v/.vmodules:/root/.vmodules
 
   v0412:
     image: khalyomede/vlang:0.4.12-alpine
@@ -14,3 +15,4 @@ services:
     working_dir: /root/app
     volumes:
       - .:/root/app
+      - ./docker-data/v/.vmodules:/root/.vmodules
