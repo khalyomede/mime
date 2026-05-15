@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: docker compose run --rm v install khalyomede.expect
+
       - name: Tests (latest)
         run: docker compose run --rm v test .
 
@@ -24,6 +27,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: docker compose run --rm v install khalyomede.expect
 
       - name: Tests (0.4.12)
         run: docker compose run --rm v0412 test .

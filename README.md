@@ -55,11 +55,17 @@ v install khalyomede.mime
 
 ## Examples
 
-- [Get the text representation](#get-the-text-representation)
-- [Get the list of allowed file extensions](#get-the-list-of-allowed-file-extensions)
-- [Create from a MIME text representation](#create-from-a-mime-text-representation)
-- [Create from a file extension](#create-from-a-file-extension)
-- [Create from a file path or URL](#create-from-a-file-path-or-url)
+- Mime
+  - [Get the text representation](#get-the-text-representation)
+  - [Get the list of allowed file extensions](#get-the-list-of-allowed-file-extensions)
+  - [Create from a MIME text representation](#create-from-a-mime-text-representation)
+  - [Create from a file extension](#create-from-a-file-extension)
+  - [Create from a file path or URL](#create-from-a-file-path-or-url)
+- Mime patterns
+  - [Get a Mime pattern text representation](#get-a-mime-pattern-text-representation)
+  - [Parse a Mime pattern](#parse-a-mime-pattern)
+  - [Check if a Mime type is included in the Mime pattern](#check-if-a-mime-type-is-included-in-the-mime-pattern)
+  - [List all supported Mimes for a Mime pattern](#list-all-supported-mimes-for-a-mime-pattern)
 
 ### Get the text representation
 
@@ -137,5 +143,84 @@ import khalyomede.mime { Mime }
 
 fn main() {
   text_html := Mime.parse_path("https://example.com/user/configuration/index.html") or { Mime.text_html }
+}
+```
+
+### Get a Mime pattern text representation
+
+```v
+module main
+
+import khalyomede.mime { MimePattern }
+
+fn main() {
+  image_mime_pattern := MimePattern.image
+
+  assert image_mime_pattern.str() == "image/*"
+}
+```
+
+Here are all the Mime patterns you can use:
+
+```v
+module main
+
+import khalyomede.mime { MimePattern }
+
+fn main() {
+  assert MimePattern.all.str() == "all/*"
+  assert MimePattern.application.str() == "application/*"
+  assert MimePattern.audio.str() == "audio/*"
+  assert MimePattern.font.str() == "font/*"
+  assert MimePattern.haptics.str() == "haptics/*"
+  assert MimePattern.image.str() == "image/*"
+  assert MimePattern.message.str() == "message/*"
+  assert MimePattern.model.str() == "model/*"
+  assert MimePattern.multipart.str() == "multipart/*"
+  assert MimePattern.text.str() == "text/*"
+  assert MimePattern.video.str() == "video/*"
+}
+```
+
+### Parse a Mime pattern
+
+```v
+module main
+
+import khalyomede.mime { MimePattern }
+
+fn main() {
+  mime_pattern := MimePattern.parse("image/*") or { MimePattern.all }
+
+  assert mime_pattern.str() == "image/*"
+}
+```
+
+### Check if a Mime type is included in the Mime pattern
+
+```v
+module main
+
+import khalyomede.mime { MimePattern }
+
+fn main() {
+  mime := "text/png"
+  mime_pattern := MimePattern.image
+
+  assert mime_pattern.matches(mime) == true
+}
+```
+
+### List all supported Mimes for a Mime pattern
+
+This will return a list of `Mime`.
+
+```v
+module main
+
+fn main() {
+  mime_pattern := MimePattern.image
+
+  assert mime_pattern.mimes().contains(Mime.image_png) == true
 }
 ```

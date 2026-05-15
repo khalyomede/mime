@@ -6,11 +6,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Breaking
+
+- The following methods behavior and output have been changed to support the addition of MimePattern (see in the Added section below) ([#1](https://github.com/khalyomede/mime/issues/1)):
+  - `Mime.from_extensions()` (deprecated) and `Mime.parse_extension()`
+  - `Mime.parse()`
+  - `Mime.str()`
+
 ### Added
 
 - Deprecate `Mime.from_text()`. Use `Mime.parse()` instead ([#2](https://github.com/khalyomede/mime/issues/2)).
 - Deprecate `Mime.from_file_extension()`. Use `Mime.parse_extension()` instead ([#2](https://github.com/khalyomede/mime/issues/2)).
 - New method `Mime.parse_path()` to parse a Mime type from a file path or URLs ([#3](https://github.com/khalyomede/mime/issues/3)).
+- New `MimePattern` and its associated method to represent mime wildcards (like `video/*` or `text/*`) ([#1](https://github.com/khalyomede/mime/issues/1)):
+  - `MimePattern.matches()`
+  - `MimePattern.mimes()`
+  - `MimePattern.parse()`
+  - `MimePattern.str()`
 
 ## [0.3.0] - 2025-07-25
 
