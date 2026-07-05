@@ -22,22 +22,22 @@ fn test_it_returns_audio_mime_types() {
 }
 
 fn test_it_returns_font_mime_types() {
-    expect(MimePattern.font.mimes()).to_be_equal_to([
+    assert MimePattern.font.mimes() == [
         Mime.font_collection
         Mime.font_otf
         Mime.font_sfnt
         Mime.font_ttf
         Mime.font_woff
         Mime.font_woff2
-    ])
+    ]
 }
 
 fn test_it_returns_haptics_mime_types() {
-    expect(MimePattern.haptics.mimes()).to_be_equal_to([
+    assert MimePattern.haptics.mimes() == [
         Mime.haptics_ivs
         Mime.haptics_hjif
         Mime.haptics_hmpg
-    ])
+    ]
 }
 
 fn test_it_returns_image_mime_types() {
