@@ -22,6 +22,18 @@ jobs:
       - name: Tests (latest)
         run: docker compose run --rm v test .
 
+  test_0_5_1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: docker compose run --rm v051 install khalyomede.expect
+
+      - name: Tests (latest)
+        run: docker compose run --rm v051 test .
+
   test_0_5_0:
     runs-on: ubuntu-latest
 
